@@ -1,5 +1,4 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Carrinho {
     ArrayList<ItemCompra> listaItens = new ArrayList<ItemCompra>();
@@ -16,14 +15,17 @@ public class Carrinho {
 
     public void mostraCarrinho() {
         System.out.println(
-                "Item" + "\t\t\t" + "descricao" + "\t\t\t\t" + "qtde" + "\t\t\t" + "preco" + "\t" + "sub total");
+                "Item" + "\t\t\t" + "Descrição" + "\t\t\t\t" + "Qtde" + "\t\t\t" + "Preço" + "\t" + "Subtotal");
         for (int i = 0; i < listaItens.size(); i++) {
             System.out.println(i + "\t" + listaItens.get(i).mostraItem());
         }
+        System.out.println(
+                "----------------------------------------------------------------------------------------------------------");
         System.out.println("\n\t\t\t\t\t\t\t\tSubtotal: " + String.format("R$%.2f", somaValores()));
-        System.out.println("\t\t\t\t\t\t\t\tdescontos " + String.format("R$%.2f", calcDesconto(somaValores())));
+        System.out.println("\t\t\t\t\t\t\t\tDescontos: " + String.format("R$%.2f", calcDesconto(somaValores())));
         System.out.println("\t\t\t\t\t\t\t\tTotal: " + String.format("R$%.2f", valorPagar()));
-        System.out.println("\n");
+        System.out.println(
+                "----------------------------------------------------------------------------------------------------------");
 
     }
 
@@ -40,7 +42,8 @@ public class Carrinho {
     }
 
     public double valorPagar() {
-        return (somaValores() - calcDesconto(totalCompra));
+        double valor = somaValores() - calcDesconto(somaValores());
+        return valor;
     }
 
 }

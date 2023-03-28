@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class ItemCompra {
     String descricao;
     int qtde;
@@ -34,11 +36,12 @@ public class ItemCompra {
     }
 
     public String mostraItem() {
-        return descricao + "\t" + preco + "\t\t" + qtde + "\t\t\t" + calcSubtotal();
+        DecimalFormat df = new DecimalFormat("#0.00");
+        return descricao + "\t" + "R$" + df.format(preco) + "\t\t" + qtde + "\t\t\t" + df.format(calcSubtotal());
     }
 
     public double calcSubtotal() {
-        return qtde * preco;
+        return this.qtde * this.preco;
     }
 
 }
